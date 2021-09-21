@@ -29,26 +29,30 @@ import java.util.Map;
 
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int result = 0;
-        int max = 0;
+        int lengthCurrSubstring = 0;
+        int maxLengthSubstring = 0;
         Map<Character, Integer> map = new HashMap<>();
 
         for (int i = 1; i <= s.length(); i++) {
             char ch = s.charAt(i - 1);
-            if (map.get(ch) == null) {
-                ++result;
-            } else {
-                if (i - map.get(ch) <= result) {
-                    max = Math.max(max, result);
-                    result = i - map.get(ch);
-                } else {
-                    ++result;
+            if (map.get(ch) != null) {
+                int distanceBetweenRepeatingCharacters = i - map.get(ch);
+
+                if (distanceBetweenRepeatingCharacters < lengthCurrSubstring) {
+                    maxLengthSubstring = Math.max(maxLengthSubstring, lengthCurrSubstring);
+                    lengthCurrSubstring = distanceBetweenRepeatingCharacters;
                 }
+
+                if (distanceBetweenRepeatingCharacters > lengthCurrSubstring) {
+                    ++lengthCurrSubstring;
+                }
+            } else {
+                ++lengthCurrSubstring;
             }
             map.put(ch, i);
         }
 
-        return Math.max(max, result);
+        return Math.max(maxLengthSubstring, lengthCurrSubstring);
     }
 
     public static void main(String[] args) {
