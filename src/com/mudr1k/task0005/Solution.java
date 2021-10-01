@@ -59,7 +59,7 @@ public class Solution {
         String s3 = "a";
         String s4 = "ac";
         String s5 = "abbababa";
-        String s6 = "abba";
+        String s6 = "1abgba2";
         String s7 = "abb";
         String s8 = "aacabdkacaa";
         String s9 = "miycvxmqggnmmcwlmizfojwrurwhwygwfykyefxbgveixykdebenzitqnciigfjgrzzbtgeazyrbiirmejhdwcgjzwqolrturj" +
